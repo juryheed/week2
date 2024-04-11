@@ -1,70 +1,70 @@
 
 public class Computer {
 
-    public String Cpu;
-    public String Ram;
-    public String GraphicsCard;
-    public String POWERSupplier;
-    public String Cooler;
-    public String Mouse;
-    public String Keyboard;
-    public String Monitor;
+    protected Cpu cpu;
+    protected Ram ram ;
+    protected GraphicsCard graphicsCard;
+    protected PowerSupplier powerSupplier;
+    protected Cooler cooler;
+    protected Mouse mouse;
+    protected Keyboard keyboard;
+    protected Monitor monitor;
 
 
-    public Computer(String Cpu,String Ram,String GraphicsCard, String POWERSupplier){
-        this.Cpu=Cpu;
-        this.Ram=Ram;
-        this.GraphicsCard=GraphicsCard;
-        this.POWERSupplier=POWERSupplier;
+    private Computer(Cpu cpu,Ram ram ,GraphicsCard graphicsCard, PowerSupplier powerSupplier){
+        this.cpu=cpu;
+        this.ram =ram ;
+        this.graphicsCard=graphicsCard;
+        this.powerSupplier=powerSupplier;
     }
-    public static  class ComputerBilder{
-        public String Cpu;
-        public String Ram;
-        public String GraphicsCard;
-        public String POWERSupplier;
-        public String Cooler;
-        public String Mouse;
-        public String Keyboard;
-        public String Monitor;
+    public static class ComputerBilder{
+        private Cpu cpu;    //밖에서 건들면 안됨
+        private Ram ram ;
+        private GraphicsCard graphicsCard;
+        private PowerSupplier powerSupplier;
+        private Cooler cooler;
+        private Mouse mouse;
+        private Keyboard keyboard;
+        private Monitor monitor;
 
-        public ComputerBilder Cpu(String Cpu){
-            this.Cpu=Cpu;
+        public ComputerBilder Cpu(String name,int price,String company,int speed,String used){  //사용자가 설정해야하니까 public
+            this.cpu=new Cpu(name,price,company,speed,used);
             return this;
         }
-        public ComputerBilder Ram(String Ram){
-            this.Ram=Ram;
+        public ComputerBilder Ram(String name,int price,String company, int volume){
+            this.ram =new Ram(name,price,company, volume);
             return this;
         }
-        public ComputerBilder GraphicsCard(String GraphicsCard){
-            this.GraphicsCard=GraphicsCard;
+        public ComputerBilder GraphicsCard(String name,int price,String company, String used){
+            this.graphicsCard=new GraphicsCard(name,price,company,used);
             return this;
         }
-        public ComputerBilder POWERSupplier(String POWERSupplier){
-            this.POWERSupplier=POWERSupplier;
+        public ComputerBilder PowerSupplier(String name,int price,String company, int print){
+            this.powerSupplier=new PowerSupplier(name,price,company,print);
             return this;
         }
-        public ComputerBilder Cooler(String Cooler){
-            this.Cooler=Cooler;
+        public ComputerBilder Cooler(String name,int price,String company, String method){
+            this.cooler=new Cooler(name,price,company,method);
             return this;
         }
-        public ComputerBilder Mouse(String Mouse){
-            this.Mouse=Mouse;
+        public ComputerBilder Mouse(String name,int price,String company){
+            this.mouse=new Mouse(name,price,company);
             return this;
         }
-        public ComputerBilder Keyboard(String Keyboard){
-            this.Keyboard=Keyboard;
+        public ComputerBilder Keyboard(String name,int price,String company, String keyarr){
+            this.keyboard=new Keyboard(name,price,company,keyarr);
             return this;
         }
-        public ComputerBilder Monitor(String Monitor){
-            this.Monitor=Monitor;
+        public ComputerBilder Monitor(String name,int price,String company, int size){
+            this.monitor=new Monitor(name,price,company,size);
             return this;
         }
         public Computer build(){    //지금까지 설정한 ComputerBuiler의 필드를 통해 객체를 생성해 반환한다.
-            Computer computer=new Computer(Cpu,Ram,GraphicsCard,POWERSupplier);
-            computer.Cooler=this.Cooler;
-            computer.Mouse=Mouse;
-            computer.Keyboard=this.Keyboard;
-            computer.Monitor=this.Monitor;
+            Computer computer=new Computer(cpu,ram ,graphicsCard,powerSupplier);
+            computer.cooler=this.cooler;
+            computer.mouse=mouse;
+            computer.keyboard=this.keyboard;
+            computer.monitor=this.monitor;
             return computer;
         }
     }
@@ -76,51 +76,23 @@ public class Computer {
         System.out.println("컴퓨터를 종료합니다.");
     }
 
-    public void run(){
+    public void run() {
         System.out.println("컴퓨터 기능을 전부 실행합니다");
-        runCpu();
-        runRam();
-        runGraphicsCard();
-        runPowerSupplier();
-        if (this.Cooler != null ) {
-            runCooler();
+        cpu.runable();
+        ram.runable();
+        graphicsCard.runable();
+        powerSupplier.runable();
+        if (this.cooler != null ) {
+            cooler.runable();
         }
-        if (this.Mouse != null ) {
-            runMouse();
+        if (this.mouse != null ) {
+            mouse.runable();
         }
-        if (Keyboard != null) {
-            runKeyboard();
+        if (keyboard != null) {
+            keyboard.runable();
         }
-        if (this.Monitor != null ) {
-            runMonitor();
+        if (this.monitor != null ) {
+            monitor.runable();
         }
     }
-
-    public void runCpu(){
-        new Cpu(this.Cpu,0 ,"",0 ,"").run__();
-    }
-    public void runRam(){
-        new Ram(this.Ram,0,"",0).run__();
-    }
-
-    public void runGraphicsCard(){
-        new GraphicsCard(this.GraphicsCard,0,"","").run__();
-    }
-    public void runPowerSupplier(){
-        new POWERSupplier(this.GraphicsCard,0,"",0).run__();
-    }
-
-    public void runCooler(){
-        new Cooler(this.Cooler,0,"","").run__();
-    }
-    public void runMouse(){
-        new Mouse(this.Mouse,0,"").run__();
-    }
-    public void runKeyboard(){
-        new Keyboard(this.Keyboard,0,"","").run__();
-    }
-    public void runMonitor(){
-        new Monitor(this.Monitor,0,"",0).run__();
-    }
-
 }
