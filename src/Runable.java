@@ -1,5 +1,5 @@
 public interface Runable{
-    public void runable();
+    public void run();
     public void on();
     public void off();
 }

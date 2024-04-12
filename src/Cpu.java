@@ -10,9 +10,10 @@ public class Cpu extends Propertie implements Runable {
         this.used = used;
     }
 
-    public void runable(){
+    public void run(){
         System.out.println(name+"를 처리합니다.");
     }
     public void on(){System.out.println(name+"를 On합니다");}
     public void off(){System.out.println(name+"를 Off합니다");}
 }
+

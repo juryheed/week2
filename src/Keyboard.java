@@ -5,7 +5,7 @@ public class Keyboard extends Propertie implements Runable {
         this.key = key;
     }
 
-    public void runable(){
+    public void run(){
         System.out.println(name+"타이핑 합니다.");
     }
     public void on(){System.out.println(name+"를 On합니다");}

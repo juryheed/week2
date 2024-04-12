@@ -4,7 +4,7 @@ public class Ram extends Propertie implements Runable {
         super(name,price,company);
         this.volume = volume;
     }
-    public void runable(){
+    public void run(){
         System.out.println(name+"데이터를 읽습니다.");
     }
     public void on(){System.out.println(name+"를 On합니다");}

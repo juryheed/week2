@@ -5,7 +5,7 @@ public class GraphicsCard extends Propertie implements Runable {
         this.used = used;
     }
 
-    public void runable(){
+    public void run(){
         System.out.println(name+"화면을 렌더링 합니다.");
     }
     public void on(){System.out.println(name+"를 On합니다");}

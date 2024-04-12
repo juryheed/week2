@@ -5,7 +5,7 @@ public class Monitor extends Propertie implements Runable {
         this.size = size;
     }
 
-    public void runable(){
+    public void run(){
         System.out.println(name+"화면을 출력합니다.");
     }
     public void on(){System.out.println(name+"를 On합니다");}

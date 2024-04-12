@@ -1,5 +1,3 @@
-
-
 public class Propertie{   //속성 상속 부모
     protected String name;    //부품명
     protected int price;      //가격
